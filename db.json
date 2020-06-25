@@ -12,5 +12,19 @@
             "plant": "IFRS",
             "quantity": "3.000"
           }
+    ],
+    "sap_poData": [
+        {
+            "po_number": "450000001",
+            "comp_code": "USS1",
+            "doc_type": "NB",
+            "vendor": "3200000000",
+            "pur_org": "IFRS",
+            "pur_grp": "001",
+            "po_item": "00010",
+            "material": "11",
+            "plant": "IFRS",
+            "qty": "3.000"
+          }
     ]
   }
