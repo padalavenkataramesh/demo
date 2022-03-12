@@ -1,0 +1,439 @@
+--components
+	-- age.js
+	import React from 'react';
+
+const Age = ({}) => (
+  <button className="btn btn-primary age" name="age">Age</button>
+);
+
+export default Age;
+
+components -- name.js
+import React from 'react';
+
+const Name = ({}) => (
+  <button className="btn btn-primary name" name="name">Name</button>
+);
+
+export default Name;
+
+
+---components -- Points.js
+import React from 'react';
+
+const Points = ({}) => (
+  <button className="btn btn-primary points" name="points">Points</button>
+);
+
+export default Points;
+
+-- components --Rank.js
+
+import React from 'react';
+
+const Rank = ({ }) => (
+  <button className="btn btn-primary rank" name="rank">Rank</button>
+);
+
+export default Rank;
+
+
+--- component -- sort.test.js
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import expect from 'expect';
+import App from '../App';
+import Age from './Age';
+import Name from './Name';
+import Points from './Points';
+import Rank from './Rank';
+import { configure } from 'enzyme';
+import { Link } from 'react-router-dom';
+import { MemoryRouter } from 'react-router'
+import Adapter from 'enzyme-adapter-react-16';
+import { mount, shallow } from 'enzyme';
+import renderer from 'react-test-renderer';
+import {spy} from 'sinon';
+
+configure({ adapter: new Adapter() });
+
+describe("Test Sorting Components", () => {
+  it('button click function should be passed as a prop to all', () => {
+    let age = shallow(<Age />);
+    expect(age.props()).toEqual({"children": "Age", "className": "btn btn-primary age", "name": "age", "onClick": undefined});
+    let rank = shallow(<Rank />);
+    expect(rank.props()).toEqual({"children": "Rank", "className": "btn btn-primary rank", "name": "rank", "onClick": undefined});
+    let points = shallow(<Points />);
+    expect(points.props()).toEqual({"children": "Points", "className": "btn btn-primary points", "name": "points", "onClick": undefined});
+    let name = shallow(<Name />);
+    expect(name.props()).toEqual({"children": "Name", "className": "btn btn-primary name", "name": "name", "onClick": undefined});
+
+  });
+});
+
+
+--- components --- table.js
+import React, {Component} from 'react';
+import {usersJSON} from '../data';
+
+export default class Table extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			users: usersJSON
+		}
+	}
+
+	componentWillReceiveProps() {
+		
+	}
+
+    // complete the comparators
+	compareByAge(a, b) {
+		
+	}
+
+	compareByName(a, b) {
+		
+	}
+
+	compareByPoints(a, b) {
+		
+	}
+
+	compareByRank(a, b) {
+		
+	}
+
+	render() {
+ 
+		return (<div>
+			<table className="table table-striped">
+				<thead>
+					<tr key="head">
+						<th>Age</th>
+						<th>Name</th>
+						<th>Points</th>
+						<th>Rank</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>)
+	}
+}
+
+
+---app.js
+import React, { Component } from 'react';
+import Age from './components/Age';
+import Name from './components/Name';
+import Points from './components/Points';
+import Rank from './components/Rank';
+import Table from './components/Table';
+
+export default class App extends Component {
+
+  constructor() {
+    super();
+
+    this.state = {
+      sortBy: ""
+    }
+
+  }
+
+  handleClickAge() {
+  }
+
+  handleClickName() {
+  }
+
+  handleClickPoints() {
+  }
+
+  handleClickRank() {
+  }
+
+  render() {
+    return (
+      <div className="text-center buttons">
+        <header className="text-center">
+          <h1>Leaderboard</h1>
+        </header>
+        <div className="text-center buttons">
+          <Age></Age>
+          <Name></Name>
+          <Points></Points>
+          <Rank></Rank>
+          <Table></Table>
+        </div>
+      </div>
+    );
+  }
+}
+
+---app.test.js
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import expect from 'expect';
+import App from './App';
+import { configure } from 'enzyme';
+import { Link } from 'react-router-dom';
+import { MemoryRouter } from 'react-router'
+import Adapter from 'enzyme-adapter-react-16';
+import { mount, shallow } from 'enzyme';
+import renderer from 'react-test-renderer';
+import {spy} from 'sinon';
+
+configure({ adapter: new Adapter() });
+
+describe("Test AppComponent", () => {
+  it('check state changes', () => {
+    let wrapper = mount(<App />);
+    wrapper.instance().handleClickAge();
+    expect(wrapper.state().sortBy).toEqual("age");
+    wrapper.instance().handleClickName();
+    expect(wrapper.state().sortBy).toEqual("name");
+    wrapper.instance().handleClickPoints();
+    expect(wrapper.state().sortBy).toEqual("points");
+    wrapper.instance().handleClickRank();
+    expect(wrapper.state().sortBy).toEqual("rank");
+  });
+
+  it('check table rendering', () => {
+    let wrapper = mount(<App />);
+    wrapper.instance().handleClickAge();
+    let table = wrapper.find('table');
+    expect(table.html().toString()).toEqual('<table class=\"table table-striped\"><thead><tr><th>Age</th><th>Name</th><th>Points</th><th>Rank</th></tr></thead><tbody><tr><td>10</td><td>Michael E. Rogers</td><td>274</td><td>7</td></tr><tr><td>11</td><td>Richard M. Mass</td><td>312</td><td>14</td></tr><tr><td>13</td><td>Joan T. Covert</td><td>3124</td><td>13</td></tr><tr><td>15</td><td>Elizabeth R. Olsen</td><td>452</td><td>9</td></tr><tr><td>17</td><td>Camille B. Burton</td><td>654645</td><td>15</td></tr><tr><td>18</td><td>Tommye R. Robinson</td><td>5345345</td><td>4</td></tr><tr><td>19</td><td>Grace C. Smith</td><td>342</td><td>17</td></tr><tr><td>20</td><td>Jennifer C. West</td><td>213</td><td>22</td></tr><tr><td>21</td><td>John L. Sandlin</td><td>34242</td><td>25</td></tr><tr><td>22</td><td>Joseph J. Freeman</td><td>354</td><td>8</td></tr><tr><td>23</td><td>Joseph S. Perez</td><td>31</td><td>20</td></tr><tr><td>24</td><td>John R. Green</td><td>6546</td><td>19</td></tr><tr><td>25</td><td>Sharon R. Ryan</td><td>134</td><td>1</td></tr><tr><td>29</td><td>Arlene R. Grimes</td><td>7675</td><td>6</td></tr><tr><td>30</td><td>Stacey D. Ward</td><td>64563</td><td>24</td></tr><tr><td>32</td><td>Thomas M. Hawkins</td><td>42342</td><td>5</td></tr><tr><td>33</td><td>Dorothy J. Carroll</td><td>42342</td><td>18</td></tr><tr><td>35</td><td>George K. Pancoast</td><td>755463</td><td>2</td></tr><tr><td>37</td><td>Alice J. Goldsmith</td><td>105</td><td>12</td></tr><tr><td>39</td><td>Felix M. Seeber</td><td>103596</td><td>11</td></tr><tr><td>40</td><td>Robert O. Lambert</td><td>18978</td><td>16</td></tr><tr><td>41</td><td>Marlana J. Huff</td><td>3123</td><td>3</td></tr><tr><td>42</td><td>Susan D. Jimenez</td><td>45345</td><td>10</td></tr><tr><td>43</td><td>Margarita D. Lambert</td><td>52342</td><td>21</td></tr><tr><td>65</td><td>Louis E. McCrae</td><td>1241</td><td>23</td></tr></tbody></table>');
+    wrapper.instance().handleClickPoints();
+    let table2 = wrapper.find('table');
+    expect(table2.html().toString()).toEqual('<table class=\"table table-striped\"><thead><tr><th>Age</th><th>Name</th><th>Points</th><th>Rank</th></tr></thead><tbody><tr><td>23</td><td>Joseph S. Perez</td><td>31</td><td>20</td></tr><tr><td>37</td><td>Alice J. Goldsmith</td><td>105</td><td>12</td></tr><tr><td>25</td><td>Sharon R. Ryan</td><td>134</td><td>1</td></tr><tr><td>20</td><td>Jennifer C. West</td><td>213</td><td>22</td></tr><tr><td>10</td><td>Michael E. Rogers</td><td>274</td><td>7</td></tr><tr><td>11</td><td>Richard M. Mass</td><td>312</td><td>14</td></tr><tr><td>19</td><td>Grace C. Smith</td><td>342</td><td>17</td></tr><tr><td>22</td><td>Joseph J. Freeman</td><td>354</td><td>8</td></tr><tr><td>15</td><td>Elizabeth R. Olsen</td><td>452</td><td>9</td></tr><tr><td>65</td><td>Louis E. McCrae</td><td>1241</td><td>23</td></tr><tr><td>41</td><td>Marlana J. Huff</td><td>3123</td><td>3</td></tr><tr><td>13</td><td>Joan T. Covert</td><td>3124</td><td>13</td></tr><tr><td>24</td><td>John R. Green</td><td>6546</td><td>19</td></tr><tr><td>29</td><td>Arlene R. Grimes</td><td>7675</td><td>6</td></tr><tr><td>40</td><td>Robert O. Lambert</td><td>18978</td><td>16</td></tr><tr><td>21</td><td>John L. Sandlin</td><td>34242</td><td>25</td></tr><tr><td>33</td><td>Dorothy J. Carroll</td><td>42342</td><td>18</td></tr><tr><td>32</td><td>Thomas M. Hawkins</td><td>42342</td><td>5</td></tr><tr><td>42</td><td>Susan D. Jimenez</td><td>45345</td><td>10</td></tr><tr><td>43</td><td>Margarita D. Lambert</td><td>52342</td><td>21</td></tr><tr><td>30</td><td>Stacey D. Ward</td><td>64563</td><td>24</td></tr><tr><td>39</td><td>Felix M. Seeber</td><td>103596</td><td>11</td></tr><tr><td>17</td><td>Camille B. Burton</td><td>654645</td><td>15</td></tr><tr><td>35</td><td>George K. Pancoast</td><td>755463</td><td>2</td></tr><tr><td>18</td><td>Tommye R. Robinson</td><td>5345345</td><td>4</td></tr></tbody></table>');
+  });
+});
+
+--- data.js
+export const usersJSON = [{
+    "rank": 3,
+    "points": 3123,
+    "name": "Marlana J. Huff",
+    "age": 41
+  },
+  {
+    "rank": 10,
+    "points": 45345,
+    "name": "Susan D. Jimenez",
+    "age": 42
+  },
+  {
+    "rank": 14,
+    "points": 312,
+    "name": "Richard M. Mass",
+    "age": 11
+  },
+  {
+    "rank": 13,
+    "points": 3124,
+    "name": "Joan T. Covert",
+    "age": 13
+  },
+  {
+    "rank": 20,
+    "points": 31,
+    "name": "Joseph S. Perez",
+    "age": 23
+  },
+  {
+    "rank": 19,
+    "points": 6546,
+    "name": "John R. Green",
+    "age": 24
+  },
+  {
+    "rank": 9,
+    "points": 452,
+    "name": "Elizabeth R. Olsen",
+    "age": 15
+  },
+  {
+    "rank": 1,
+    "points": 134,
+    "name": "Sharon R. Ryan",
+    "age": 25
+  },
+  {
+    "rank": 24,
+    "points": 64563,
+    "name": "Stacey D. Ward",
+    "age": 30
+  },
+  {
+    "rank": 2,
+    "points": 755463,
+    "name": "George K. Pancoast",
+    "age": 35
+  },
+  {
+    "rank": 18,
+    "points": 42342,
+    "name": "Dorothy J. Carroll",
+    "age": 33
+  },
+  {
+    "rank": 23,
+    "points": 1241,
+    "name": "Louis E. McCrae",
+    "age": 65
+  },
+  {
+    "rank": 15,
+    "points": 654645,
+    "name": "Camille B. Burton",
+    "age": 17
+  },
+  {
+    "rank": 4,
+    "points": 5345345,
+    "name": "Tommye R. Robinson",
+    "age": 18
+  },
+  {
+    "rank": 17,
+    "points": 342,
+    "name": "Grace C. Smith",
+    "age": 19
+  },
+  {
+    "rank": 22,
+    "points": 213,
+    "name": "Jennifer C. West",
+    "age": 20
+  },
+  {
+    "rank": 25,
+    "points": 34242,
+    "name": "John L. Sandlin",
+    "age": 21
+  },
+  {
+    "rank": 21,
+    "points": 52342,
+    "name": "Margarita D. Lambert",
+    "age": 43
+  },
+  {
+    "rank": 5,
+    "points": 42342,
+    "name": "Thomas M. Hawkins",
+    "age": 32
+  },
+  {
+    "rank": 8,
+    "points": 354,
+    "name": "Joseph J. Freeman",
+    "age": 22
+  },
+  {
+    "rank": 6,
+    "points": 7675,
+    "name": "Arlene R. Grimes",
+    "age": 29
+  },
+  {
+    "rank": 7,
+    "points": 274,
+    "name": "Michael E. Rogers",
+    "age": 10
+  },
+  {
+    "rank": 12,
+    "points": 105,
+    "name": "Alice J. Goldsmith",
+    "age": 37
+  },
+  {
+    "rank": 16,
+    "points": 18978,
+    "name": "Robert O. Lambert",
+    "age": 40
+  },
+  {
+    "rank": 11,
+    "points": 103596,
+    "name": "Felix M. Seeber",
+    "age": 39
+  }
+];
+--- index.css
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+button {
+  margin-top: 80px;
+  margin: 2px;
+}
+
+table.table {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 5%;
+}
+
+.table td, .table th {
+   text-align: center;
+}
+
+header {
+  margin-bottom: 20px;
+}
+
+
+-- index.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+
+ReactDOM.render(<App />, document.getElementById('root'));
+
+
+--- package.json
+
+{
+  "name": "leaderboard",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "create-react-app": "^1.4.3",
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.0.17",
+    "save": "^2.3.1"
+  },
+  "scripts": {
+    "prestart": "npm install",
+    "start": "HOST=0.0.0.0 PORT=8000 ./node_modules/.bin/react-scripts start",
+    "pretest": "npm install",
+    "test": "rm -rf ./unit.xml; CI=true TEST_REPORT_FILENAME=./unit.xml ./node_modules/.bin/react-scripts test --verbose --env=jsdom --testResultsProcessor ./node_modules/jest-junit-reporter"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
+    "expect": "^21.2.1",
+    "jest-junit": "^3.3.0",
+    "react-test-renderer": "^16.2.0",
+    "sinon": "^4.1.3",
+    "jest-junit-reporter": "^1.1.0"
+  }
+}
+
+--

@@ -1,0 +1,88 @@
+<div id="main-splitpane-left" class="base-question__left-pane"><section class="question-view__title-wrapper"><h1 class="question-view__title">6. React: Leaderboard</h1></section><section class="question-view__instruction"><div class="candidate-rich-text"><div id="3k9lo20kfso-instruction"><div class="preheader" style="margin:0 auto;display:none;">Implement a simple application to display astronaut records.</div>
+
+<p>Complete the given &nbsp;React application that models a simple leaderboard that sorts the data based on various parameters.&nbsp;</p>
+
+<p>Model the implementation after the instructions below. Click any image to expand it in a new window. <a href="https://s3.amazonaws.com/istreet-assets/HTgl-3dj2ua1ETn6zmsm6Q/leaderboard.gif">Click here for a demo.</a></p>
+
+<p>&nbsp;</p>
+
+<table style="margin:0 auto;border-collapse:collapse;vertical-align:middle;border:1px solid black;padding:10px;width:80%;">
+	<tbody>
+		<tr>
+			<th style="font-weight:bold;text-align:middle;vertical-align:middle;border:1px solid black;padding:10px;">Behavior</th>
+			<th style="font-weight:bold;text-align:middle;vertical-align:middle;border:1px solid black;padding:10px;width:40%;" title="Click images to expand.">Example</th>
+		</tr>
+		<tr>
+			<td style="vertical-align:middle;border:1px solid black;padding:10px;">
+			<p>&nbsp;</p>
+
+			<ul>
+				<li style="line-height:180%;">Each user on the leaderboard is represented by the following fields:
+				<ul>
+					<li style="line-height:180%;">Rank: The actual rank of the user on the leaderboard.</li>
+					<li style="line-height:180%;">Points: The reward points that the user has gained over time.</li>
+					<li style="line-height:180%;">Name: A string representing the name of the user.</li>
+					<li style="line-height:180%;">Age: An integer representing the age of the user.</li>
+				</ul>
+				</li>
+			</ul>
+			</td>
+			<td style="vertical-align:middle;border:1px solid black;padding:10px;">
+			<figure style="background-color:transparent;"><a href="https://s3.amazonaws.com/istreet-assets/Oa-FvKNR5GeMBIaeQWYAgA/Screen%20Shot%202017-09-06%20at%209.46.06%20PM.png" target="_blank" title="Click to expand."><img alt="Initial State" height="220" src="https://s3.amazonaws.com/istreet-assets/X4BXQV7ItfFRZ3im97UjxA/Screenshot%202018-12-10%20at%201.44.24%20PM.png" style="width:100%;" width="350"></a>
+			<figcaption>The application's initial state.</figcaption>
+			</figure>
+			</td>
+		</tr>
+		<tr>
+			<td style="vertical-align:middle;border:1px solid black;padding:10px;">
+			<ul>
+				<li style="line-height:180%;">Upon each&nbsp;button click, the table should sort&nbsp;itself in ascending order based on the parameter specified by the button click.</li>
+				<li style="line-height:180%;">Clicking the <em>Rank</em> button sorts the table in ascending order based on the rank of each user.</li>
+			</ul>
+			</td>
+			<td style="vertical-align:middle;border:1px solid black;padding:10px;">
+			<figure style="background-color:transparent;"><a href="https://s3.amazonaws.com/istreet-assets/IPY0C-e2re_09RQlQaPIJQ/Screen%20Shot%202017-09-06%20at%209.46.16%20PM.png" target="_blank" title="Click to expand."><img alt="View Info" height="211" src="https://s3.amazonaws.com/istreet-assets/mr8wtsG_ajEArYLi_4uphg/Screenshot%202018-12-10%20at%201.46.12%20PM.png" style="width:100%;" width="350"></a>
+			<figcaption>
+			<p>Clicking the <em>Rank</em>&nbsp;button displays&nbsp;the leaderboard, sorted based on the rank of each user.</p>
+			</figcaption>
+			</figure>
+			</td>
+		</tr>
+		<tr>
+			<td style="vertical-align:middle;border:1px solid black;padding:10px;">
+			<ul>
+				<li style="line-height:180%;">Similarly, clicking the <em>Points,&nbsp; Age</em>, and <em>Name</em> button, sort the leaderboard accordingly.</li>
+			</ul>
+			</td>
+			<td style="vertical-align:middle;border:1px solid black;padding:10px;">
+			<figure style="background-color:transparent;"><a href="https://s3.amazonaws.com/istreet-assets/mgSLJYX-Yc3bkGRMYnCBlQ/Screen%20Shot%202017-09-06%20at%209.46.29%20PM.png" target="_blank" title="Click to expand."><img height="210" src="https://s3.amazonaws.com/istreet-assets/s2MNjOvca_TyIv5MaBSeAw/Screenshot%202018-12-10%20at%201.47.00%20PM.png" style="width:100%;" width="350"> </a>
+			<figcaption>
+			<p>Clicking the <em>Points</em>&nbsp;button&nbsp;displays&nbsp;the leaderboard, sorted based on the points of each user.</p>
+			</figcaption>
+			</figure>
+
+			<figure style="background-color:transparent;"><a href="https://s3.amazonaws.com/istreet-assets/Nn6vfCr6pl6esjlTaX2KAA/Screen%20Shot%202017-09-06%20at%209.46.38%20PM.png" target="_blank" title="Click to expand."><img height="210" src="https://s3.amazonaws.com/istreet-assets/1d5iQ23I8x--9Ap1dgsWLg/Screenshot%202018-12-10%20at%201.47.45%20PM.png" style="width:100%;" width="350"> </a>
+
+			<figcaption>
+			<p>Clicking the <em>Name</em>&nbsp;button displays&nbsp;the leaderboard, sorted based on the name of each user.</p>
+			</figcaption>
+			</figure>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<div style="margin:0 auto;">
+<p><br>
+&nbsp;</p>
+
+<p>&nbsp;</p>
+</div>
+</div></div></section><section class="projects-instructions"><h3 class="projects-instructions__heading">Software Instructions</h3><div class="projects-instructions__content"><div><p>The question(s) requires <b>Node 8 LTS or above</b>.</p>
+
+<ul>
+  <li><a href="https://nodejs.org/en/download/" target="_blank">Download &amp; Install Node.JS</a></li>
+</ul>
+</div></div></section><section class="projects-git-instructions"><h3 class="projects-git-instructions__heading">Git Instructions</h3><p class="projects-git-instructions__subheading">Use the following commands to work with this project</p><div class="projects-git-instructions__commands"><div class="d-flex flex-column projects-git-instructions__commands-item" data-automation="project-command-run"><p class="projects-git-instructions__commands-item-label">run <button class="ui-btn ui-btn-normal ui-btn-plain projects-git-instructions__commands-item-copy-btn"><div class="ui-content align-icon-right"><span class="ui-text" aria-hidden="false">Copy</span></div></button></p><p class="projects-git-instructions__commands-item-command-text">npm start</p></div><div class="d-flex flex-column projects-git-instructions__commands-item" data-automation="project-command-test"><p class="projects-git-instructions__commands-item-label">test <button class="ui-btn ui-btn-normal ui-btn-plain projects-git-instructions__commands-item-copy-btn"><div class="ui-content align-icon-right"><span class="ui-text" aria-hidden="false">Copy</span></div></button></p><p class="projects-git-instructions__commands-item-command-text">npm test</p></div><div class="d-flex flex-column projects-git-instructions__commands-item" data-automation="project-command-install"><p class="projects-git-instructions__commands-item-label">install <button class="ui-btn ui-btn-normal ui-btn-plain projects-git-instructions__commands-item-copy-btn"><div class="ui-content align-icon-right"><span class="ui-text" aria-hidden="false">Copy</span></div></button></p><p class="projects-git-instructions__commands-item-command-text">npm install</p></div></div></section></div>
+
+
