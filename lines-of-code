@@ -1,0 +1,5 @@
+Lines of code
+---------------
+To generate a breakdown of lines of code (LOC) by file in the src directory, you can use the cloc (Count Lines of Code) tool with the --by-file flag. Here's how you can run it:
+
+cloc src --by-file
