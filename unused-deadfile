@@ -1,0 +1,8 @@
+https://github.com/M-Izadmehr/deadfile/
+
+
+$ npm install -g deadfile
+
+deadfile ./src/index.js
+
+deadfile ./src
